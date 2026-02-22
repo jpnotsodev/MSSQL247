@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build">
+  <Sdk Name="Microsoft.Build.Sql" Version="2.0.0" />
+  <PropertyGroup>
+    <Name>DatabaseProjectMSSQL247_beta</Name>
+    <ProjectGuid>{D2CC506D-FABF-454C-84D7-0B472D3230B6}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql170DatabaseSchemaProvider</DSP>
+    <ModelCollation>1033, CI</ModelCollation>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="MSSQL247.Database.Objects" />
+    <Folder Include="MSSQL247.Database.Objects\Functions" />
+    <Folder Include="MSSQL247.Database.Objects\StoredProcedures" />
+    <Folder Include="MSSQL247.Database.Objects\Tables" />
+  </ItemGroup>
+  <Target Name="BeforeBuild">
+    <Delete Files="$(BaseIntermediateOutputPath)\project.assets.json" />
+  </Target>
+</Project>
