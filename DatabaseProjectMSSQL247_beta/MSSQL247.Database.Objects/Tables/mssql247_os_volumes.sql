@@ -1,6 +1,6 @@
 CREATE TABLE [dbo].[mssql247_os_volumes]
 (
-  [volume_id] INT NOT NULL,
+  [volume_id] INT IDENTITY(1,1) NOT NULL,
   [sql_instance] VARCHAR(55),
   [volume_name] VARCHAR(55),
   [volume_mount_point] VARCHAR(55),
