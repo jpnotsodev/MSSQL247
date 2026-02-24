@@ -14,6 +14,17 @@
       <DatabaseVariableLiteralValue>master</DatabaseVariableLiteralValue>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DatabaseProjectMSSQL247_beta\MSSQL247.Dashboard" />
+    <Folder Include="DatabaseProjectMSSQL247_beta\MSSQL247.Dashboard\Grafana" />
+    <Folder Include="DatabaseProjectMSSQL247_beta\MSSQL247.Powershell" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="DatabaseProjectMSSQL247_beta\MSSQL247.Powershell\Get-OSVolumes.ps1" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DatabaseProjectMSSQL247_beta\MSSQL247.Dashboard\Grafana\sample.json" />
+  </ItemGroup>
   <Target Name="BeforeBuild">
     <Delete Files="$(BaseIntermediateOutputPath)\project.assets.json" />
   </Target>
