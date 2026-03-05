@@ -31,8 +31,8 @@ AS
 
 	UPDATE MSSQL247_beta.dbo.mssql247_blocked_query_stats
 	SET blocked_query_status = 0
-	WHERE NOT EXISTS (SELECT session_id
+	WHERE CONVERT(VARCHAR(20), session_id) + ',' + CONVERT(VARCHAR(20), blocking_session_id) 
+		NOT IN (SELECT CONVERT(VARCHAR(20), session_id) + ',' + CONVERT(VARCHAR(20), blocking_session_id)
 						FROM sys.dm_exec_requests
-						WHERE blocking_session_id <> 0
-						AND session_id = MSSQL247_beta.dbo.mssql247_blocked_query_stats.session_id )
+						WHERE blocking_session_id <> 0)
 RETURN 0
