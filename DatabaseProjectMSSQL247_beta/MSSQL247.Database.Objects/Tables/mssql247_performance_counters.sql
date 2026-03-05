@@ -7,8 +7,12 @@ CREATE TABLE [dbo].[mssql247_performance_counters]
   instance_name NVARCHAR(255),
   cntr_value BIGINT, 
   cntr_type INT,
-  snapshot_timestamp DATETIME
+  collection_datetime DATETIME,
+  collection_datetime_utc DATETIME
 )
 
 ALTER TABLE [dbo].[mssql247_performance_counters]
-ADD CONSTRAINT df_perfcounter_stamp_getdate DEFAULT GETDATE() FOR snapshot_timestamp
+ADD CONSTRAINT df_perfcounter_stamp_getdate DEFAULT GETDATE() FOR collection_datetime
+
+ALTER TABLE [dbo].[mssql247_performance_counters]
+ADD CONSTRAINT df_perfcounter_stamp_getutcdate DEFAULT GETDATE() FOR collection_datetime_utc

@@ -1,4 +1,4 @@
-CREATE TABLE [dbo].[mssql247_databases_master_files]
+CREATE TABLE [dbo].[mssql247_master_files]
 (
   [database_master_file_id] INT IDENTITY (1, 1) NOT NULL PRIMARY KEY,
   [sql_instance] VARCHAR(55) NULL,
@@ -14,5 +14,6 @@ CREATE TABLE [dbo].[mssql247_databases_master_files]
   [is_media_read_only] BIT NOT NULL DEFAULT 0,
   [is_sparse] BIT NOT NULL DEFAULT 0,
   [is_percent_growth] BIT NOT NULL DEFAULT 0,
-  [snapshot_timestamp] DATETIME DEFAULT GETDATE()
+  [collection_datetime] DATETIME DEFAULT GETDATE(),
+  [collection_datetime_utc] DATETIME DEFAULT GETUTCDATE()
 )

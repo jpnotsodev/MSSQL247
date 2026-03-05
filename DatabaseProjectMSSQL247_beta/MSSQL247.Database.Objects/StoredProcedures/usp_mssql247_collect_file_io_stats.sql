@@ -1,9 +1,10 @@
 CREATE PROCEDURE [dbo].[usp_mssql247_collect_file_io_stats]
   @dbid int = NULL,
   @fileid int = NULL
-AS
+AS  
+  DECLARE @SqlInstance VARCHAR(155) = dbo.udf_get_server_name() 
   ; WITH file_io_stats AS (
-         SELECT dbo.udf_get_server_name() sql_instance, database_id, file_id, sample_ms,
+         SELECT @SqlInstance sql_instance, database_id, file_id, sample_ms,
         num_of_reads, num_of_bytes_read,
         io_stall_read_ms, num_of_writes,
         num_of_bytes_written, io_stall_write_ms, io_stall

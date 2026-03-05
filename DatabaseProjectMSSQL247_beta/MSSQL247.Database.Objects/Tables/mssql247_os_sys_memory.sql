@@ -9,5 +9,6 @@ CREATE TABLE [dbo].[mssql247_os_sys_memory]
   [system_high_memory_signal_state] BIT NOT NULL DEFAULT 0,
   [system_low_memory_signal_state] BIT NOT NULL DEFAULT 0,
   [system_memory_state_desc] VARCHAR(55),
-  [snapshot_timestamp] DATETIME DEFAULT GETDATE()
+  [collection_datetime] DATETIME DEFAULT GETDATE(),
+  [collection_datetime_utc] DATETIME DEFAULT GETUTCDATE()
 )

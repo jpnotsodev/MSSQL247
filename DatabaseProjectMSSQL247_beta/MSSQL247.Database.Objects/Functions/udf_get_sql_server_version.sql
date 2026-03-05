@@ -1,4 +1,4 @@
-CREATE FUNCTION dbo.ufn_sqlowl_get_sqlserver_version (
+CREATE FUNCTION dbo.udf_get_sql_server_version (
 	@productVersion VARCHAR(20) = NULL)
 RETURNS VARCHAR(155)
 BEGIN 

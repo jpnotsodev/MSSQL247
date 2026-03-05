@@ -12,11 +12,15 @@ CREATE TABLE [dbo].[mssql247_file_io_stats]
   [num_of_bytes_written] BIGINT NOT NULL,
   [io_stall_write_ms] BIGINT NOT NULL,
   [io_stall] BIGINT NOT NULL,
-  [snapshot_timestamp] DATETIME 
+  [collection_datetime] DATETIME,
+  [collection_datetime_utc] DATETIME 
 )
 
 ALTER TABLE [dbo].[mssql247_file_io_stats] 
 ADD CONSTRAINT df_sample_ms_default_0 DEFAULT 0 FOR [sample_ms]
 
 ALTER TABLE [dbo].[mssql247_file_io_stats] 
-ADD CONSTRAINT df_snapshot_timestamp_default_getdate DEFAULT GETDATE() FOR [snapshot_timestamp]
+ADD CONSTRAINT df_collection_datetime_getdate DEFAULT GETDATE() FOR [collection_datetime]
+
+ALTER TABLE [dbo].[mssql247_file_io_stats] 
+ADD CONSTRAINT df_collection_datetime_utc_getutcdate DEFAULT GETUTCDATE() FOR [collection_datetime_utc]

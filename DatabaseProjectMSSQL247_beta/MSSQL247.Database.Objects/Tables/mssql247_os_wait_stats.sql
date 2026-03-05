@@ -7,5 +7,6 @@ CREATE TABLE [dbo].[mssql247_os_wait_stats]
   [wait_time_ms] BIGINT NOT NULL DEFAULT 0,
   [max_wait_time_ms] BIGINT NOT NULL DEFAULT 0,
   [signal_wait_time_ms] BIT NOT NULL,
-  [snapshot_timestamp] DATETIME DEFAULT GETDATE()
+  [collection_datetime] DATETIME DEFAULT GETDATE(),
+  [collection_datetime_utc] DATETIME DEFAULT GETUTCDATE()
 )

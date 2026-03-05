@@ -1,6 +1,7 @@
 CREATE TABLE [dbo].[mssql247_databases]
 (
   [id] INT NOT NULL IDENTITY(1, 1),
+  [sql_instance] NVARCHAR(255) NULL,
   [name] VARCHAR(55),
   [database_id] INT,
   [create_date] DATETIME,
@@ -13,6 +14,7 @@ CREATE TABLE [dbo].[mssql247_databases]
   [recovery_model] VARCHAR(55),
   [state] VARCHAR(55),
   [is_in_standby] BIT NOT NULL DEFAULT 0,
-  [snapshot_timestamp] DATETIME DEFAULT GETDATE(),
+  [collection_datetime] DATETIME DEFAULT GETDATE(),
+  [collection_datetime_utc] DATETIME DEFAULT GETUTCDATE(),
   CONSTRAINT PK_databases_id PRIMARY KEY ([id])
 )

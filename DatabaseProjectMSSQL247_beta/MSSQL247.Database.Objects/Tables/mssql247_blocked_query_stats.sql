@@ -24,12 +24,15 @@ CREATE TABLE [dbo].[mssql247_blocked_query_stats]
   local_net_address VARCHAR(155), 
   client_net_address VARCHAR(155),
   blocked_query_status BIT NOT NULL DEFAULT 1,
-  snapshot_timestamp DATETIME
+  collection_datetime DATETIME,
+  collection_datetime_utc DATETIME
 )
 
 ALTER TABLE dbo.mssql247_blocked_query_stats
 ADD CONSTRAINT pk_id_293128390128 PRIMARY KEY (blocked_query_stat_id)
 
 ALTER TABLE dbo.mssql247_blocked_query_stats
-ADD CONSTRAINT df_snapshot_timestamp_3289329833 DEFAULT GETDATE() FOR snapshot_timestamp
+ADD CONSTRAINT df_collection_datetime_3289329833 DEFAULT GETDATE() FOR collection_datetime
 
+ALTER TABLE dbo.mssql247_blocked_query_stats
+ADD CONSTRAINT df_collection_datetime_utc_3289329833 DEFAULT GETUTCDATE() FOR collection_datetime_utc
