@@ -20,6 +20,7 @@
     <Folder Include="DatabaseProjectMSSQL247_beta\MSSQL247.Powershell" />
   </ItemGroup>
   <ItemGroup>
+    <Build Include="DatabaseProjectMSSQL247_beta\MSSQL247.Dashboard\Grafana\Dashboard.json" />
     <Build Include="DatabaseProjectMSSQL247_beta\MSSQL247.Powershell\Get-OSVolumes.ps1" />
   </ItemGroup>
   <ItemGroup>

@@ -6,8 +6,12 @@ CREATE TABLE [dbo].[mssql247_os_ring_buffers]
   [ring_buffer_type] VARCHAR(155) NOT NULL,
   [ring_buffer_timestamp] DATETIME,
   [record] VARCHAR(2048) NOT NULL,
-  [snapshot_timestamp] DATETIME
+  [collection_datetime] DATETIME,
+  [collection_datetime_utc] DATETIME
 )
 
 ALTER TABLE [dbo].[mssql247_os_ring_buffers] 
-ADD CONSTRAINT df_os_ring_buffer_napshot_timestamp_default_getdate DEFAULT GETDATE() FOR [snapshot_timestamp]
+ADD CONSTRAINT df_os_ring_buffer_collection_datetime DEFAULT GETDATE() FOR [collection_datetime]
+
+ALTER TABLE [dbo].[mssql247_os_ring_buffers] 
+ADD CONSTRAINT df_os_ring_buffer_collection_datetime_utc DEFAULT GETUTCDATE() FOR [collection_datetime_utc]

@@ -13,5 +13,6 @@ CREATE TABLE [dbo].[mssql247_os_process_memory]
   [available_commit_limit_kb] BIGINT NOT NULL,
   [process_physical_memory_low] BIT NOT NULL,
   [process_virtual_memory_low] BIT NOT NULL,
-  [snapshot_timestamp] DATETIME DEFAULT GETDATE()
+  [collection_datetime] DATETIME DEFAULT GETDATE(),
+  [collection_datetime_utc] DATETIME DEFAULT GETUTCDATE()
 )

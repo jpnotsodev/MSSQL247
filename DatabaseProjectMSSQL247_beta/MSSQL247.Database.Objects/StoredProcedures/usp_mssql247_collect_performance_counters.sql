@@ -1,4 +1,4 @@
-CREATE PROCEDURE [dbo].[mssql247_collect_performance_counters]
+CREATE PROCEDURE [dbo].[usp_mssql247_collect_performance_counters]
 AS
   
   WITH ctePerfCounters (object_name, counter_name,
