@@ -25,7 +25,8 @@ AS
   INSERT INTO @Jobs 
     SELECT 'MSSQL247_CPU_MEM', 'n/a', 'Data Collector', 'RING_BUFFER', 1, 'EXEC dbo.usp_mssql247_collect_os_ring_buffers', 'TSQL', 0, 3, 2, 'MSSQL247_beta', 'MSSQL247_CPU_MEM_SCHEDULE', 4, 1, 4, 1, 0, 1 UNION
     SELECT 'MSSQL247_CPU_MEM', 'n/a', 'Data Collector', 'PROCESS_MEMORY', 2, 'EXEC dbo.usp_mssql247_collect_os_process_memory', 'TSQL', 0, 3, 2, 'MSSQL247_beta', 'MSSQL247_CPU_MEM_SCHEDULE', 4, 1, 4, 1, 0, 1 UNION
-    SELECT 'MSSQL247_CPU_MEM', 'n/a', 'Data Collector', 'SYS_MEMORY', 3, 'EXEC dbo.usp_mssql247_collect_os_sys_memory', 'TSQL', 0, 1, 2, 'MSSQL247_beta', 'MSSQL247_CPU_MEM_SCHEDULE', 4, 1, 4, 1, 0, 1 UNION
+    SELECT 'MSSQL247_CPU_MEM', 'n/a', 'Data Collector', 'SYS_MEMORY', 3, 'EXEC dbo.usp_mssql247_collect_os_sys_memory', 'TSQL', 0, 3, 2, 'MSSQL247_beta', 'MSSQL247_CPU_MEM_SCHEDULE', 4, 1, 4, 1, 0, 1 UNION
+    SELECT 'MSSQL247_CPU_MEM', 'n/a', 'Data Collector', 'MEMORY_STATS', 3, 'EXEC dbo.usp_mssql247_collect_memory_stats', 'TSQL', 0, 1, 2, 'MSSQL247_beta', 'MSSQL247_CPU_MEM_SCHEDULE', 4, 1, 4, 1, 0, 1 UNION
     SELECT 'MSSQL247_SYS_GENERAL', 'n/a', 'Data Collector', 'SYS_INFO', 1, 'EXEC dbo.usp_mssql247_collect_os_sys_info', 'TSQL', 0, 3, 2, 'MSSQL247_beta', 'MSSQL247_SYS_GENERAL_SCHEDULE', 4, 1, 4, 1, 0, 1 UNION
     SELECT 'MSSQL247_SYS_GENERAL', 'n/a', 'Data Collector', 'SYS_INFO_2', 2, 'EXEC dbo.usp_mssql247_collect_instance_info', 'TSQL', 0, 1, 2, 'MSSQL247_beta', 'MSSQL247_SYS_GENERAL_SCHEDULE', 4, 1, 4, 1, 0, 1 UNION
     SELECT 'MSSQL247_DATABASES', 'n/a', 'Data Collector', 'DATABASES', 1, 'EXEC dbo.usp_mssql247_collect_databases', 'TSQL', 0, 3, 2, 'MSSQL247_beta', 'MSSQL247_DATABASES_SCHEDULE', 4, 1, 4, 1, 0, 1 UNION
@@ -183,3 +184,20 @@ SQLCMD -S localhost -Q $Query', 'PowerShell', 0, 1, 2, 'MSSQL247_beta', 'MSSQL24
 
 
 RETURN 0
+
+-- DECLARE @JobName varchar(255)
+
+-- DECLARE jobs CURSOR FOR
+-- SELECT name FROM msdb.dbo.sysjobs
+-- WHERE name LIKE 'MSSQL247_%'
+-- OPEN jobs
+-- FETCH NEXT FROM jobs INTO @JobName
+-- WHILE @@FETCH_STATUS = 0
+-- BEGIN
+-- DECLARE @Sql varchar(255) 
+-- SET @Sql = 'EXEC msdb.dbo.sp_delete_job @job_name = ''' + @JobName + ''''
+-- EXECUTE (@Sql)
+-- FETCH NEXT FROM jobs INTO @JobName
+-- END
+-- CLOSE jobs
+-- DEALLOCATE jobs
